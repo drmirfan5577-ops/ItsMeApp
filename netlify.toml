@@ -1,0 +1,13 @@
+[build]
+  command = "([ -d node_modules/expo ] || npm install --legacy-peer-deps --no-audit --no-fund) && npx expo export -p web"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# Single-page app fallback so deep links (e.g. /chat/123, /login) load the app
+# instead of returning Netlify's 404 / "Page not found".
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
